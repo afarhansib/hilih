@@ -1,0 +1,65 @@
+<html>
+  <head>
+    <title>Hilih</title>
+    <meta charset="UTF-8" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+
+  <body>
+    <main class="flex flex-col min-h-screen gap-4 p-4" x-data="app">
+      <div id="in" class="w-full grow relative">
+        <textarea
+          name="input-text"
+          id="input-text"
+          class="bg-gray-200 absolute resize-none inset-0 p-3 rounded"
+          x-model="text"
+        ></textarea>
+      </div>
+      <div id="out" class="w-full grow relative">
+        <textarea
+          name="output-text"
+          id="output-text"
+          class="bg-gray-300 absolute resize-none inset-0 p-3 rounded"
+          x-model="convert(text)"
+          disabled
+        ></textarea>
+      </div>
+      <div
+        class="footer text-center text-sm rounded bg-gray-100 p-3"
+        title="15 Sep 2022, 23:12 GMT+7"
+      >
+        created with
+        <span class="text-red-600"
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="inline"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1z"
+            /></svg
+        ></span>
+        by
+        <span class="text-red-600"
+          ><a href="https://afarhansib.github.io/">afarhansib</a></span
+        >
+      </div>
+    </main>
+
+    <script src="https://unpkg.com/alpinejs" defer></script>
+    <script>
+      document.addEventListener("alpine:init", () => {
+        Alpine.data("app", () => ({
+          text: "Ketik sesuatu...",
+          convert: (text) => {
+            return text.replace(/a|u|e|o/g, "i").replace(/A|U|E|O/g, "I");
+          }
+        }));
+      });
+    </script>
+  </body>
+</html>
